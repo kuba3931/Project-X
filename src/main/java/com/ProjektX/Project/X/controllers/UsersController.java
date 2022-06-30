@@ -42,6 +42,11 @@ public class UsersController {
         return "invoice";
     }
 
+    @GetMapping("/success")
+    public String getSuccessPage(){
+        return "success";
+    }
+
     @PostMapping("/register")
     public String register(@ModelAttribute UsersModel usersModel){
         System.out.println("register request " + usersModel);
@@ -49,7 +54,7 @@ public class UsersController {
         UsersModel registeredUser = usersService.registerUser(usersModel.getLogin(),
                 usersModel.getPassword(),usersModel.getEmail());
 
-        return registeredUser == null ? "error" : "redirect:/login";
+        return registeredUser == null ? "error" : "redirect:/success";
     }
 
     @PostMapping("/login")
